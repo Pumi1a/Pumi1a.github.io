@@ -1,7 +1,645 @@
+
 <!DOCTYPE html>
-<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark"  data-a11y-animated-images="system" data-a11y-link-underlines="false">
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="ZPA8qr9_sX8MFwYZhGkaIa_Q5jCnCU6HVWsilSqwAoY" />
-  </head>
+    <title>README Viewer</title>
+    <style>
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #9C6500 } /* Comment.Preproc */
+.highlight .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #E40000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #008400 } /* Generic.Inserted */
+.highlight .go { color: #717171 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #687822 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #767600 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #A45A77 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+code {
+    background-color: #f4f4f4;
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    font-size: 85%;
+}
+
+    </style>
+</head>
+<body>
+
+    <h2>BURUPURO-TIMER</h2>
+    <table style="width:100%; table-layout: fixed;">
+    <tr>
+    <td style="width:50%; vertical-align:top; overflow-wrap: break-word;"><p><a href="https://github.com/Pumi1a/BURUPURO-TIMER/blob/main/README.md">English README is here</a></p>
+<p>Qiita にも記事として投稿してあります。記事リンクは<a href="https://qiita.com/Pumila/items/ef72f110f8f5e8fad1df">こちら</a>から。</p>
+<h2>はじめに</h2>
+<p>BLUE PROTOCOL（以下、ブルプロ）の昼夜切り替えタイミングを通知してくれる Discord Bot を作成しました。作ろうと思った経緯はブルプロをやっている方なら分かると思います。ブルプロには昼限定や夜限定湧きのネームドボスが存在します。そして、昼夜は 25 分で切り替わります。しかし、ミッション中や、自由探索に入っていると今、昼なのか夜なのか分からないのです。また、他の作業をやりながら、夜湧きネームドのためにブルプロを起動するという方もいると思います（私が現にそうでした）。そのために、昼夜切り替えタイミングを通知してくる Bot を作成しました。</p>
+<h2>注意点</h2>
+<p>エラー報告は開発者の <a href="https://twitter.com/Pumi1a">Twitter</a> か <a href="https://github.com/Pumi1a/BURUPURO-TIMER">github</a> までお知らせ下さい。様々な条件で検証をしたつもりですが、私が Python 初心者なこともありバグがあると思います。申し訳ありません。現時点で把握しているバグについては最後の方で記載しています。上手く動作しない時は <code>/reset_server</code> コマンドを実行して再設定してみて下さい。</p>
+<p>なお、利用しているホスティングサービスは &quot;Railway&quot; になります。性能はメモリが 8GB、CPU が 8 コアになります。そこまで負荷のかかる Bot ではないと思いますが、もしかしたら安定しなくなるかもしれません。&quot;Railway&quot; については以下記事にまとめています。</p>
+<p>https://qiita.com/Pumila/items/29f26fb349d5592046ae</p>
+<h2>導入方法</h2>
+<p><strong>注意：Bot の導入はサーバの管理者権限を持っている方しか出来ません。</strong></p>
+<p><a href="https://discord.com/api/oauth2/authorize?client_id=1127823303369834578&amp;permissions=3072&amp;scope=bot%20applications.commands">こちら</a>からクリックしてログイン後、導入したいサーバを選択して[はい]、続いて認証を押下して下さい。ロボットかどうかの確認画面でチェックして導入完了です。
+必要なくなったら、サーバ負荷軽減のために追放して頂けると助かります。</p>
+<h2>使い方</h2>
+<p><strong>注意： 5 分おきにサーバ情報の更新を行っていますが、スラッシュコマンドの実行のタイミングによっては、期待通りの挙動を示さないことがあります。</strong> 例えば、通知先のチャンネル変更したのに、デフォルトの通知先に通知される、通知をオフにしたのに通知されるなどです。これらに関してはプログラムの仕様上の問題なのでご了承下さい。</p>
+<p><strong>また、基準時間を設定しないと Bot による投稿はされません。</strong></p>
+<p><strong>Bot を再デプロイしたときには再度設定をお願いします。データベースの用意が面倒なので、サーバごとの設定はデータベースに保存していません。ご了承下さい（要望が多ければデータベースの導入を検討します）。</strong></p>
+<h3>各スラッシュコマンドの説明</h3>
+<p>Bot の各スラッシュコマンドについて説明していきます。スラッシュコマンド実行時に以下のようなエラーが出たときはもう一度コマンドを試してみて下さい。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/ad29da08-18cc-0377-f841-a0c0b9fa2655.png" alt="キャプチャ.PNG" /></p>
+<h4>通知先のチャンネルを変更する</h4>
+<p>通知先のチャンネルを変更することができます。デフォルトはシステムメッセージのチャンネルになっています。</p>
+<ol>
+<li>&quot;/&quot; を入力して、ブルプロタイマーのアイコンをクリックし、コマンド一覧から、<code>/set_channel</code> を選択して下さい。</li>
+<li>通知をさせたいチャンネル名を入力し、実行して下さい。候補として挙がっているものから選択しても構いません。</li>
+<li>Bot に投稿権限がないチャンネル、もしくはテキストチャンネルではないチャンネルを選択した場合、以下のような警告が出ます。<code>Warning: No permission to post in the channel {new_channel.name}.</code>, <code>{new_channel.name} is not a text channel.</code>。</li>
+<li>Bot から <code>Set channel to {new_channel_name}.</code> とメッセージが来ます。</li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/935ca7eb-0d9e-f222-600e-b67538ad1402.png" alt="キャプチャ.PNG" /></p>
+<h4>基準時間を設定する</h4>
+<p>昼夜切り替えのタイミングを設定することができます。各サーバで切り替えタイミングが異なっていたり、メンテナンスなどでズレる可能性があるため、自動で設定はしません。ユーザが昼夜切り替えのタイミングを入力するようにしています。入力する時間は過去の時間でも未来の時間でも問題ありません。</p>
+<p>エラーなどによりきちんと投稿されないことがあります。基準時間を現時刻の30分前くらいに設定して、投稿されるのを確認してから正しい基準時間を設定することをおすすめします。投稿されなかったら、<code>/reset_server</code> コマンドを実行して再度設定してみて下さい。</p>
+<ol>
+<li>&quot;/&quot; を入力して、ブルプロタイマーのアイコンをクリックし、コマンド一覧から、<code>/set_day_base_time</code> または <code>/set_night_base_time</code> を選択して下さい。<code>set_day_base_time</code> では、昼になったタイミングを設定するコマンドで、同時に夜の時間も設定してくれます。逆に <code>set_night_base_time</code> では、夜になったタイミングを設定するコマンドで、同時に昼の時間も設定してくれます。</li>
+<li>どちらか都合のいいコマンドを選択し、時間を入力してコマンドを実行して下さい。</li>
+<li>Bot から <code>Day base time set to: {hour}:{minute}. Night base time set to: {hour}:{minute}.</code> とメッセージが来ます。</li>
+</ol>
+<p>&lt;img width=300 src=&quot;https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/4f06aa25-460a-ab9b-57ae-0737c6dc347c.png&quot;&gt;&lt;img width=300 src=&quot;https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/19d8706b-3d62-82a5-fb77-f165967f85b8.png&quot;&gt;</p>
+<h4>昼夜のどちらかを通知、または両方を通知する</h4>
+<p>昼夜のどちらかだけ通知をさせたいという方もいますよね（夜限のネームドは夜だけ通知させればいいわけですし）。そこで、昼夜両方を通知させるか、昼夜のどちらかだけ通知させるかを設定することができます。デフォルト値は両方通知するようになっています。</p>
+<ol>
+<li>&quot;/&quot; を入力して、ブルプロタイマーのアイコンをクリックし、コマンド一覧から、<code>/set_state</code> を選択して下さい。</li>
+<li>選択肢として、[Day, Night, Both] が挙がると思います。夜だけ通知させたい方は、<code>Night</code> を、昼だけ通知させたい方は <code>Day</code> を選択して実行して下さい。やっぱり両方通知させたくなったら、 <code>Both</code> を選択して下さい。</li>
+<li>Bot から <code>State set to: {state}</code> とメッセージが来ます。</li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/ddcd4da3-2486-7e55-2cad-58b22a1ac6ce.png" alt="4.PNG" /></p>
+<h4>通知するタイミングを「あと何分で昼/夜になります」と変更する</h4>
+<p>昼夜ピッタリに通知が来ても、ゲームを起動してネームド討伐に間に合わないよという方のために、「あと何分で昼/夜になります」と通知方法を変更させることができます。デフォルト値は 0 です。</p>
+<ol>
+<li>&quot;/&quot; を入力して、ブルプロタイマーのアイコンをクリックし、コマンド一覧から、<code>/notify_in_advance</code> を選択して下さい。</li>
+<li>次にどれくらい前に通知させたいかを分単位で入力し実行して下さい。</li>
+<li>Bot から <code>Will now notify {minutes_before} minutes in advance.</code> とメッセージが来ます。</li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/b6d3089b-17d2-da45-29e8-a064da134e43.png" alt="5.PNG" /></p>
+<h4>常に通知するか選択する</h4>
+<p>常に昼夜のタイミングを通知するか設定することができます。デフォルト値は <code>True</code> です。</p>
+<ol>
+<li>&quot;/&quot; を入力して、ブルプロタイマーのアイコンをクリックし、コマンド一覧から、<code>/set_persistent_posting</code> を選択して下さい。</li>
+<li>選択肢として、[True, False] が挙がると思います。常に通知させたくない方は、<code>False</code> を選択して下さい。</li>
+<li>Bot から <code>Set persistent_posting to {new_value}.</code> とメッセージが来ます。</li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/ee389fe1-6d6e-bb89-a848-eedc968c8ff2.png" alt="6.PNG" /></p>
+<h4>一時的に通知するか選択する</h4>
+<p>一時的に昼夜のタイミングを通知するか設定することができます。デフォルト値は <code>False</code> です。</p>
+<ol>
+<li>&quot;/&quot; を入力して、ブルプロタイマーのアイコンをクリックし、コマンド一覧から、<code>/set_temporary_posting</code> を選択して下さい。</li>
+<li>選択肢として、[True, False] が挙がると思います。一時的に通知させたい時に、<code>True</code> を、もう通知させなくてよくなったら <code>False</code> を選択して下さい。</li>
+<li>Bot から <code>Set temporary_posting to {new_value}.</code> とメッセージが来ます。</li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/d849bba8-72d0-b2d9-7097-5b46116d6eb0.png" alt="7.PNG" /></p>
+<p>機能的には <code>/set_persistent_posting</code> で補える機能ですが、一応作っておきました。どちらを使用しても構いません。</p>
+<h4>設定を初期設定にリセットする</h4>
+<p>各種設定を初期設定にリセットすることができます。上手く投稿がされない時などに使用してみて下さい。</p>
+<ol>
+<li>&quot;/&quot; を入力して、ブルプロタイマーのアイコンをクリックし、コマンド一覧から、<code>/reset_server </code> を選択して実行して下さい。</li>
+<li>Bot から <code>Server configuration has been reset. Default post channel set to {channel.name}. Please input your settings.</code> とメッセージが来ます。</li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/53e9d72e-0ac3-9a23-ccf0-4996e17a3f02.png" alt="キャプチャ.PNG" /></p>
+<h2>現時点で把握しているバグ</h2>
+<p>25分間隔で投稿していますが、1日経つと、何分か昼夜切り替えタイミングがズレてしまうそうです。考えられるものとして、昼夜切り替えが正確に25分ピッタリでない、またはメンテナンスや何らかの都合でサーバの時間がズレてしまっていることが挙げられます。こちらに関しては、検証していきますが、情報提供して頂けると助かります。</p>
+<h2>現時点での実装予定の機能</h2>
+<ul>
+<li>データベースを用意し、再デプロイした時でも再設定する必要がなくなるようにする機能。</li>
+</ul>
+<h2>最後に</h2>
+<p>ブルプロ楽しいーーーー！！！オロチの「生命の奔流」全然出ねええええええええ（くそがぁーーーーー）。オロチ 11 体厳選しましたよ…そのために、50 分間隔でタイマーをかけながら、他の作業をしていたのですが、これ Bot で自動化できるんじゃねと思い作成しました。ぜひ使ってみて下さい。
+サーバの維持費用のために、この Bot を気に入ってくれた方はご寄付して頂けると助かります。</p>
+<p>【Amazon ギフト券 受取人：yskl6695@gmail.com】</p>
+<p>https://www.amazon.co.jp/dp/B004N3APGO</p>
+<p>【PayPal】</p>
+<p>https://www.paypal.com/paypalme/IrsPumila</p>
+<p>ご意見、ご感想、ご要望、エラー報告などは<a href="https://twitter.com/Pumi1a">Twitter</a> まで。</p>
+</td>
+    <td style="width:50%; vertical-align:top; overflow-wrap: break-word;"><p><a href="https://github.com/Pumi1a/BURUPURO-TIMER/blob/main/README-ja.md">日本語版 README はこちら</a></p>
+<h1>BURUPURO-TIMER</h1>
+<h2>Introduction</h2>
+<p>I have created a Discord Bot that notifies you of the day and night switch timings in BLUE PROTOCOL (hereinafter, &quot;BURUPURO&quot;). If you play BURUPURO, you'll understand why I wanted to create this. In BURUPURO, there are Named Bosses that spawn only during the day or night. And the day and night change every 25 minutes. However, when you are on a mission or exploring freely, it's hard to know whether it's day or night. Also, I think there are some people (like myself) who would be working on other tasks and then launch BURUPURO for a Named Boss that spawns at night. For this reason, I have created a bot that notifies you of the day and night switch timings.</p>
+<h2>Points to note</h2>
+<p>Please report any errors to the developer via <a href="https://twitter.com/Pumi1a">Twitter</a> or <a href="https://github.com/Pumi1a/BURUPURO-TIMER">github</a>. I have tried to verify under various conditions, but as I am a beginner in Python, there may be bugs. I apologize for any inconvenience.Bugs that I am aware of at this point are described towards the end. If it doesn't work properly, try resetting by executing the <code>/reset_server</code> command.</p>
+<p>The hosting service used is &quot;Railway&quot;. It has a memory of 8GB and a CPU of 8 cores. I don't think it's a particularly demanding bot, but it might become unstable. Please refer to <a href="https://qiita.com/Pumila/items/29f26fb349d5592046ae">this</a> for information about &quot;Railway&quot;.</p>
+<h2>Installation method</h2>
+<p><strong>Note: Only those with server admin rights can install the Bot.</strong></p>
+<p>Please click <a href="https://discord.com/api/oauth2/authorize?client_id=1127823303369834578&amp;permissions=3072&amp;scope=bot%20applications.commands">here</a>, log in, select the server you want to install on, click [Yes], and then press Authenticate. Complete the installation by checking the robot confirmation screen.If you no longer need it, I would appreciate it if you could ban it to reduce the server load.</p>
+<h2>How to use</h2>
+<p><strong>Note: Although the server information is updated every 5 minutes, depending on the timing of the slash command execution, the bot may not behave as expected.</strong> For instance, you might get notifications to the default destination even after you have changed the notification channel, or you may get notifications even after you have turned them off. Please understand that these are issues due to the program's specifications.</p>
+<p><strong>Furthermore, the bot will not post anything if the base time is not set.</strong></p>
+<p><strong>When redeploying the Bot, I ask that you please reset the configuration. Because preparing the database is cumbersome, I do not save the settings for each server in the database. Please understand（If there are many requests, I will consider introducing a database.）.</strong></p>
+<h3>Description of Each Slash Command</h3>
+<p>Here I will explain each slash command of the bot.Please try the slash command again if you encounter the following error when executing it.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/ad29da08-18cc-0377-f841-a0c0b9fa2655.png" alt="キャプチャ.PNG" /></p>
+<h4>Changing the Notification Channel</h4>
+<p>You can change the channel to which notifications are sent. By default, it is set to the system message channel.</p>
+<ol>
+<li>Type &quot;/&quot; and click on the Blue Pro Timer icon, then select <code>/set_channel</code> from the command list.</li>
+<li>Enter the name of the channel you want notifications to go to, and execute the command.</li>
+<li>If you choose a channel where the bot does not have permission to post or a channel that is not a text channel, you will receive a warning like this: Warning: <code>No permission to post in the channel {new_channel.name}.</code>, <code>{new_channel.name} is not a text channel.</code>.</li>
+<li>You will receive a message from the Bot saying <code>Set channel to {new_channel_name}.</code>.</li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/935ca7eb-0d9e-f222-600e-b67538ad1402.png" alt="キャプチャ.PNG" /></p>
+<h4>Setting the Base Time</h4>
+<p>You can set the timing for the day-night switch. Since each server may have different switch timings, or they may shift due to maintenance, it is not set automatically. The user is required to enter the timing of the day-night switch. There is no problem whether the time you input is in the past or the future.</p>
+<ol>
+<li>Type &quot;/&quot; and click on the Blue Pro Timer icon, then select <code>/set_day_base_time</code> or <code>/set_night_base_time</code> from the command list. With <code>set_day_base_time</code>, you can set the timing when it becomes daytime, and it will also set the nighttime for you. On the other hand, <code>set_night_base_time</code> allows you to set the timing when it becomes nighttime, and it will also set the daytime for you.</li>
+<li>Select the command that suits you, enter the time, and execute the command.</li>
+<li>You will receive a message from the bot saying <code>Day base time set to: {hour}:{minute}. Night base time set to: {hour}:{minute}.</code></li>
+</ol>
+<p>&lt;img width=300 src=&quot;https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/4f06aa25-460a-ab9b-57ae-0737c6dc347c.png&quot;&gt;&lt;img width=300 src=&quot;https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/19d8706b-3d62-82a5-fb77-f165967f85b8.png&quot;&gt;</p>
+<h4>Choose to Notify Either Day or Night, or Both</h4>
+<p>There may be people who only want to be notified during the day or night (for example, if you have a named event only at night, you only need to be notified at night). Therefore, you can choose to notify both day and night, or just one. The default setting is to notify both.</p>
+<ol>
+<li>Type &quot;/&quot; and click on the Blue Pro Timer icon, then select <code>/set_state</code> from the command list.</li>
+<li>You will have the options [Day, Night, Both]. If you only want to be notified at night, select <code>Night</code>, if you only want to be notified during the day, select <code>Day</code>. If you decide you want to be notified both times, select <code>Both</code>.</li>
+<li>You will receive a message from the bot saying <code>State set to: {state}.</code></li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/ddcd4da3-2486-7e55-2cad-58b22a1ac6ce.png" alt="4.PNG" /></p>
+<h4>Changing the Notification Timing to &quot;It will be Day/Night in X Minutes&quot;</h4>
+<p>Even if you are notified exactly at day or night, you may not have time to launch the game and take down the named. So, you can change the notification method to &quot;It will be Day/Night in X minutes&quot;. The default value is 0.</p>
+<ol>
+<li>Type &quot;/&quot; and click on the Blue Pro Timer icon, then select <code>/notify_in_advance</code> from the command list.</li>
+<li>Next, enter in minutes how far in advance you want to be notified and execute the command.</li>
+<li>You will receive a message from the bot saying <code>Will now notify {minutes_before} minutes in advance.</code></li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/b6d3089b-17d2-da45-29e8-a064da134e43.png" alt="5.PNG" /></p>
+<h4>Choose to Always Notify</h4>
+<p>You can set whether or not to always notify the day/night timing. The default value is <code>True</code>.</p>
+<ol>
+<li>Type &quot;/&quot; and click on the Blue Pro Timer icon, then select <code>/set_persistent_posting</code> from the command list.</li>
+<li>You will have the options [True, False]. If you don't want to be notified all the time, select <code>False</code>.</li>
+<li>You will receive a message from the bot saying <code>Set persistent_posting to {new_value}.</code></li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/ee389fe1-6d6e-bb89-a848-eedc968c8ff2.png" alt="6.PNG" /></p>
+<h4>Choose to Temporarily Notify</h4>
+<p>You can set whether to temporarily notify the day/night timing. The default value is <code>False</code>.</p>
+<ol>
+<li>Type &quot;/&quot; and click on the Blue Pro Timer icon, then select <code>/set_temporary_posting</code> from the command list.</li>
+<li>You will have the options [True, False]. If you want to be notified temporarily, select <code>True</code>, if you no longer need to be notified, select <code>False</code>.</li>
+<li>You will receive a message from the bot saying <code>Set temporary_posting to {new_value}.</code></li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/d849bba8-72d0-b2d9-7097-5b46116d6eb0.png" alt="7.PNG" /></p>
+<p>This function is covered by <code>/set_persistent_posting</code>, but I created it just in case. You can use either one.</p>
+<h4>Resetting to Default Settings</h4>
+<p>You can reset various settings back to their defaults. Please try using this when you're having trouble posting.</p>
+<ol>
+<li>Enter &quot;/&quot;, click on the Blue Pro Timer icon, and from the command list, select and execute <code>/reset_server</code>.</li>
+<li>You will receive a message from the Bot saying <code>Server configuration has been reset. Default post channel set to {channel.name}.</code></li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/53e9d72e-0ac3-9a23-ccf0-4996e17a3f02.png" alt="キャプチャ.PNG" /></p>
+<h2>Known bugs at present</h2>
+<p>I am posting at 25-minute intervals, but it seems that after a day passes, the timing of the day-night switch shifts by a few minutes. This could be due to the day-night switch not being exactly 25 minutes, or due to the server's time shifting due to maintenance or other circumstances. I will investigate this issue, but it would be helpful if you could provide me with any information.</p>
+<h2>Features planned for implementation at the current stage</h2>
+<ul>
+<li>A feature to prepare a database, eliminating the need to reconfigure every time you redeploy.</li>
+</ul>
+<h2>Finally</h2>
+<p>BURUPURO is so much fun!!! But Orochi's &quot;Stream of Life&quot; hardly ever appears (damn it!!!). I carefully selected 11 Orochi... For that, I set a timer every 50 minutes while doing other tasks, but I thought it could be automated with a bot, so I created one. Please give it a try.</p>
+<p>To help cover the server maintenance costs, any donations from those who enjoy this bot would be greatly appreciated.</p>
+<p>[Amazon Gift Card Recipient: yskl6695@gmail.com]</p>
+<p>https://www.amazon.co.jp/dp/B004N3APGO</p>
+<p>[PayPal]</p>
+<p>https://www.paypal.com/paypalme/IrsPumila</p>
+<p>Please send your opinions, impressions, requests, error reports, etc., to my <a href="https://twitter.com/Pumi1a">Twitter</a>.</p>
+</td>
+    </tr>
+    </table>
+    
+    <h2>Qiita_Twitter</h2>
+    <table style="width:100%; table-layout: fixed;">
+    <tr>
+    <td style="width:50%; vertical-align:top; overflow-wrap: break-word;"><p><a href="https://github.com/Pumi1a/Qiita_Twitter/blob/main/README.md">English README is here</a></p>
+<p>Qiita にも記事として投稿してあります。記事リンクは<a href="https://qiita.com/Pumila/items/b09b1f8532e129e1b16d">こちら</a>から。</p>
+<h2>はじめに</h2>
+<p>Qiita の記事の中からランダムで Twitter に投稿するシステムを構築しました。ランダムといっても完全ランダムではなく、音楽プレイヤーのシャッフルをリピートしている感じになります。同じ記事が連投されたり、偏ったりすることがありますからね。Qiita に投稿してある記事のリストを保持し、それをシャッフルして Twitter に投稿し、全ての記事が投稿されたら、最初に戻りまたシャッフルして Twitter に投稿することを繰り返す流れになります。</p>
+<h2>環境</h2>
+<ul>
+<li>Raspberry Pi 4 Model B<ul>
+<li>CentOS Stream 8<ul>
+<li>Python 3.11.0<ul>
+<li>tweepy 4.14.0</li>
+<li>requests 2.28.2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>導入</h2>
+<p>ラズパイなどのサーバを持っていない方はホスティングサービスの利用を検討してみて下さい。無料で使えるホスティングサービスについては以下記事にまとめてあります。使い方については、以下記事の参考を参照して下さい。私は Railway にて稼働させています。</p>
+<p>https://qiita.com/Pumila/items/f66053143c4255f1de18</p>
+<p>https://qiita.com/Pumila/items/29f26fb349d5592046ae</p>
+<h3>Qiita アクセストークンの取得</h3>
+<p><a href="https://qiita.com">Qiita</a> の右上の自分のアイコンから[設定]→[アプリケーション]→[<a href="https://qiita.com/settings/tokens/new">新しくトークンを発行する</a>]（このリンクからも飛べます）</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/9ed9854a-02e2-0afc-1b34-f39c9685a33d.png" alt="1.PNG" /></p>
+<p>アクセストークンの発行ページに飛べたら、適当に名前をつけて、スコープとして最適なものを選択して下さい。Qiita Team とやらが何なのか私は知りませんが、使ってはいないので <code>read_qiita</code> だけ選択し発行します。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/5bdec186-9d3b-49a5-6567-d17ea74abbaf.png" alt="2.PNG" /></p>
+<p>アクセストークンは 1 度しか表示されないのできちんとメモするのを忘れないようにして下さい（まあ、忘れても再発行すればいいんですが…）。これで、アクセストークンの取得は完了です。</p>
+<h3>Twitter API の取得</h3>
+<p>続いて、Twitter API の取得に移っていきます。<a href="https://developer.twitter.com/en/portal/petition/essential/basic-info">Twitter Developer Portal</a> にアクセスし、<code>Sign up for Free Account</code> を押下します（~~月額 100$ なんて払えるわけないだろ！ふざけてんのか？~~）。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/60f9d945-b480-b996-9744-08c1d0e9b3be.png" alt="3.PNG" /></p>
+<p>以下のように Twitter API をどのように使うのか聞かれますので、適当に ChatGPT くんを用いて生成させましょう（250文字以上制限があります）。
+私は以下のように記載しました（ほとんどこの内容は見てないのではなかろうか…）。ChatGPT くんは壮大な内容に膨らませてくれますね…まあいいでしょう。あとは全てチェックして、[Submit] を押下して下さい。
+<em>I plan on leveraging the Twitter API to create an automated system that will tweet the articles I post on Qiita. The idea is to build a bridge between these two platforms, providing an efficient way to simultaneously share my knowledge with both my Twitter followers and Qiita readers. By doing so, I hope to expand the reach of my articles beyond just the Qiita community, making them accessible to a wider audience through Twitter. This not only enhances the visibility of my content, but also potentially fosters engaging discussions among users of both platforms. I believe that this integration could greatly streamline my sharing process and help cultivate a more interconnected community around the content I publish.</em></p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/470a2123-30b9-9360-7fdc-6c602f9672d6.png" alt="4.PNG" /></p>
+<p>すると、すぐにダッシュボードに移ると思います（本当に内容見てるのか？適当に書いても問題ないのでは…）。ダッシュボードから [+ Create Project] を選択します。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/6216c144-5ab4-b0fe-08b7-e12268996656.png" alt="5.PNG" /></p>
+<p>適当に名前を入力して次へ、 使い方として、[Makeing a bot] を選択し次へ、プロジェクトの説明も適当に入力して次へを選択して下さい。アプリケーションの名前の入力を求められるのでここでも適当に入力して次へ進んで下さい。
+<code>API Key</code> と <code>API Key Secret</code> が表示されるので、これをメモしておいて下さい。<code>Bearer Token</code> は特に使いません。メモしたら、[App Settings] を押下して下さい。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/7477cd7e-c9c2-f987-dddd-90beaa7bd11f.png" alt="7.PNG" /></p>
+<p>以下のような画面に遷移するので、<code>User authentication settings</code> から [Set up] を選択して下さい。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/3a960c1d-8e54-cedc-946d-42390493f5f4.png" alt="8.PNG" /></p>
+<p>アプリ権限としては、<code>Read and write</code> を選択して下さい。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/a21dd5de-f532-c3f2-72da-c44a440fe64f.png" alt="9.PNG" /></p>
+<p>アプリの種類はどちらでもいいと思いますが、<code>Native App</code> を選択して下さい。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/90147137-670f-5625-1118-f23f4a9a4649.png" alt="10.PNG" /></p>
+<p>最後にアプリ情報として、 <code>Callback URI / Redirect URL</code> と <code>Website URL</code> を設定して下さい。Qiita のホームページを登録しておけばいいと思います。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/9d78c7e3-d3c0-b911-ecf2-754bbfae7f10.png" alt="11.PNG" /></p>
+<p>設定が完了すると <code>Client ID</code> と <code>Client Secret</code> が表示されますが、今回は使用しないので、特にメモする必要はありません（あくまで自己責任で）。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/bc08ab60-763c-d5b9-dd23-da89d5f3491b.png" alt="12.PNG" /></p>
+<p>続いて、<code>Settings</code> の隣にある <code>Keys and tokens</code> を選択し、<code>Access Token and Secret</code> の [Generate] を押下して下さい。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/9d068550-1cec-8930-72c7-f03fafe34600.png" alt="13.PNG" /></p>
+<p>すると、以下のように　<code>Access Token</code> と <code>Access Token Secret</code> が発行されるので、メモしておきましょう。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/bdcf7d8b-a241-e63c-168d-0b63b39951d1.png" alt="14.PNG" /></p>
+<p>最後に確認として、<code>Access Token and Secret</code> の権限がきちんと <code>Created with Read and  Write permissions</code> となっていることを確認して下さい。この権限に &lt;font color=&quot;Red&quot;&gt;<code>Write</code>&lt;/font&gt; が含まれていない場合は、<code>User authentication settings</code> の設定が間違えている可能性があります。再度設定を見直して、<code>Access Token and Secret</code> を再発行して下さい。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/0c1d1307-672e-bae2-d98e-85e51fd5c78d.png" alt="16.PNG" /></p>
+<p>これで、Twitter API を利用するために必要な情報が揃いました。いよいよ実装に移っていきましょう。</p>
+<h3>実装</h3>
+<p>ソースコードの流れを簡単に説明していきます。<code>get_all_posts()</code> 関数では Qiita に投稿してある全ての記事を取得します。<code>post_tweet(message)</code> 関数では受け取った <code>message</code> を Twitter に投稿してくれます。最後に <code>main()</code> 関数では取得した全記事の中から、タイトルと URL 、タグを取得します。そして、<code>zip()</code> 関数を用いてリストをまとめてから、シャッフルします。その後ループの中で、<code>message</code> を作成し（なるべく Qiita のお作法に従いました。お好みで修正して下さい）、<code>post_tweet()</code> 関数を呼び出してツイートし 1 時間待機します。フリーアカウントだと月に 1,500 ツイートできるみたいなので、待機時間は最短で 28.8 分まで短縮することが可能です（こちらもお好みで修正して下さい）。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/8a87d3a4-e8bb-f855-4c4d-f5e006c8f593.png" alt="17.PNG" /></p>
+<p>続いて各変数について説明していきます。
+上 4 つは Twitter API に関するものです。最後の <code>BEARER</code> は Qiita のアクセストークンになります。</p>
+<ul>
+<li><code>CONSUMER_KEY</code>：<code>API Key</code></li>
+<li><code>CONSUMER_SECRET</code>：<code>API Key Secret</code></li>
+<li><code>ACCESS_TOKEN</code>：<code>Access Token</code></li>
+<li><code>ACCESS_TOKEN_SECRET</code>：<code>Access Token Secret</code></li>
+<li><code>BEARER</code>：Qiita のアクセストークン</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">tweepy</span>
+
+<span class="k">def</span> <span class="nf">get_all_posts</span><span class="p">():</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">per_page</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">all_posts</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://qiita.com/api/v2/authenticated_user/items?page=</span><span class="si">{</span><span class="n">page</span><span class="si">}</span><span class="s1">&amp;per_page=</span><span class="si">{</span><span class="n">per_page</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+        <span class="n">posts</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">posts</span><span class="p">:</span>
+            <span class="n">all_posts</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">posts</span><span class="p">)</span>
+            <span class="n">page</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">all_posts</span>
+
+<span class="k">def</span> <span class="nf">post_tweet</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">consumer_key</span><span class="o">=</span><span class="n">CONSUMER_KEY</span><span class="p">,</span> 
+    <span class="n">consumer_secret</span><span class="o">=</span><span class="n">CONSUMER_SECRET</span><span class="p">,</span> <span class="n">access_token</span><span class="o">=</span><span class="n">ACCESS_TOKEN</span><span class="p">,</span> 
+    <span class="n">access_token_secret</span><span class="o">=</span><span class="n">ACCESS_TOKEN_SECRET</span><span class="p">)</span>
+    
+    <span class="n">client</span><span class="o">.</span><span class="n">create_tweet</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">message</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">posts</span> <span class="o">=</span> <span class="n">get_all_posts</span><span class="p">()</span> 
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+                <span class="n">titles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">])</span>
+                <span class="n">urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">])</span>
+                <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">])</span>
+            <span class="n">combined_lists</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">titles</span><span class="p">,</span><span class="n">urls</span><span class="p">,</span><span class="n">tags</span><span class="p">))</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">combined_lists</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">combined_lists</span><span class="p">:</span>
+                <span class="n">tag_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+                    <span class="n">tag_message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">tag</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> #Qiita </span><span class="si">{</span><span class="n">tag_message</span><span class="si">}</span><span class="s2"> @</span><span class="si">{</span><span class="n">USER_NAME</span><span class="si">}</span><span class="s2">より&quot;</span>
+                <span class="n">post_tweet</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3600</span><span class="p">)</span>  <span class="c1"># Wait for 1 hour</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># Wait for 1 minute before trying again</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Twitter API credentials</span>
+    <span class="n">USER_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;USER_NAME&quot;</span><span class="p">)</span>
+    <span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CONSUMER_KEY&quot;</span><span class="p">)</span>
+    <span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CONSUMER_SECRET&quot;</span><span class="p">)</span>
+    <span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;ACCESS_TOKEN&quot;</span><span class="p">)</span>
+    <span class="n">ACCESS_TOKEN_SECRET</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;ACCESS_TOKEN_SECRET&quot;</span><span class="p">)</span>
+
+    <span class="n">BEARER</span> <span class="o">=</span> <span class="n">os</span> <span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BEARER&quot;</span><span class="p">)</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">BEARER</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="p">}</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<h2>最後に</h2>
+<p>Qiita の記事の中からランダムで Twitter に投稿する機能を実装してみました。これで、定期的に Twitter に Qiita の記事が投稿されるので、少しでも皆様の目に届くことを期待しています。Github に Dokerfile ごとアップロードしているので、こちらからデプロイすることも可能です。良き Twitter ライフを。</p>
+<p>https://github.com/Pumi1a/Qiita_Twitter</p>
+<h2>参考</h2>
+<p><a href="https://note.com/bunsekiya_tech/n/n473884d9c843">【TwitterAPI】note記事を自動投稿するPythonコードを作ってみた</a></p>
+</td>
+    <td style="width:50%; vertical-align:top; overflow-wrap: break-word;"><p><a href="https://github.com/Pumi1a/Qiita_Twitter/blob/main/README-ja.md">日本語版 README はこちら</a></p>
+<h2>Introduction</h2>
+<p>I have built a system that posts articles from Qiita to Twitter in a random manner. However, it's not entirely random, it's more like repeating the shuffle feature on a music player. This is because the same articles might be posted repeatedly or there might be a bias. The system holds a list of articles posted on Qiita, shuffles them, and posts them to Twitter. When all articles have been posted, it returns to the beginning, reshuffles, and continues to post.</p>
+<p>Qiita is a Japanese information sharing site. Therefore, it might be a good idea to automatically post about personal blogs on Twitter or post articles from Stack Overflow.</p>
+<h2>Environment</h2>
+<ul>
+<li>Raspberry Pi 4 Model B<ul>
+<li>CentOS Stream 8<ul>
+<li>Python 3.11.0<ul>
+<li>tweepy 4.14.0</li>
+<li>requests 2.28.2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Implementation</h2>
+<p>If you don't have a server like Raspberry Pi, you might want to consider using a hosting service. Information about free hosting services can be found in the following article. Please refer to the following article for how to use them. I am running it on Railway.</p>
+<p>https://qiita.com/Pumila/items/f66053143c4255f1de18</p>
+<p>https://qiita.com/Pumila/items/29f26fb349d5592046ae</p>
+<h3>Obtaining a Qiita Access Token</h3>
+<p>From your icon in the upper right corner of <a href="https://qiita.com">Qiita</a>, go to [Settings] → [Applications] → [<a href="https://qiita.com/settings/tokens/new">Generate new token</a>] (You can also jump from this link)</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/9ed9854a-02e2-0afc-1b34-f39c9685a33d.png" alt="1.PNG" /></p>
+<p>Once you get to the access token issuance page, please give it a suitable name and select the appropriate scope. I'm not sure what Qiita Team is, but since I'm not using it, I'll select <code>read_qiita</code> and issue it.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/5bdec186-9d3b-49a5-6567-d17ea74abbaf.png" alt="2.PNG" /></p>
+<p>Please make sure to take a note of the access token as it is displayed only once (well, you can reissue it if you forget it...). With this, the acquisition of the access token is complete.</p>
+<h3>Obtaining the Twitter API</h3>
+<p>Next, let's move on to obtaining the Twitter API. Access the <a href="https://developer.twitter.com/en/portal/petition/essential/basic-info">Twitter Developer Portal</a> and click on Sign up for Free Account (~~there's no way I can afford to pay $100 a month! Are you kidding me?~~).</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/60f9d945-b480-b996-9744-08c1d0e9b3be.png" alt="3.PNG" /></p>
+<p>You will be asked how you plan to use the Twitter API, so let's generate an appropriate response using ChatGPT (there is a minimum character limit of 250). I wrote as follows (I doubt they read much of this content...). ChatGPT will help you come up with some grandiose details... well, that's okay. Then, check all the boxes and click [Submit].
+<em>I plan on leveraging the Twitter API to create an automated system that will tweet the articles I post on Qiita. The idea is to build a bridge between these two platforms, providing an efficient way to simultaneously share my knowledge with both my Twitter followers and Qiita readers. By doing so, I hope to expand the reach of my articles beyond just the Qiita community, making them accessible to a wider audience through Twitter. This not only enhances the visibility of my content, but also potentially fosters engaging discussions among users of both platforms. I believe that this integration could greatly streamline my sharing process and help cultivate a more interconnected community around the content I publish.</em></p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/470a2123-30b9-9360-7fdc-6c602f9672d6.png" alt="4.PNG" /></p>
+<p>I suppose you'll be immediately redirected to the dashboard (Are you really looking at the content? Isn't it okay to just write anything...?). Select [+ Create Project] from the dashboard.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/6216c144-5ab4-b0fe-08b7-e12268996656.png" alt="5.PNG" /></p>
+<p>Enter a random name and click next. For usage, select [Making a bot] and click next. Enter a random project description and click next. You will be asked to enter the name of your application, so enter anything here as well and proceed to the next step. The <code>API Key</code> and <code>API Key Secret</code> will be displayed, so please note them down. You will not particularly use the <code>Bearer Token</code>. After you have taken notes, please press [App Settings].</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/7477cd7e-c9c2-f987-dddd-90beaa7bd11f.png" alt="7.PNG" /></p>
+<p>You will be directed to a screen like the one below, so please select [Set up] from <code>User authentication settings</code>.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/3a960c1d-8e54-cedc-946d-42390493f5f4.png" alt="8.PNG" /></p>
+<p>For application permissions, please select <code>Read and write</code>.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/a21dd5de-f532-c3f2-72da-c44a440fe64f.png" alt="9.PNG" /></p>
+<p>As for the type of app, either will be fine, but please choose <code>Native App</code>.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/90147137-670f-5625-1118-f23f4a9a4649.png" alt="10.PNG" /></p>
+<p>Finally, as application information, please set <code>Callback URI</code> / <code>Redirect URL and Website URL</code>. You can register the homepage of Qiita.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/9d78c7e3-d3c0-b911-ecf2-754bbfae7f10.png" alt="11.PNG" /></p>
+<p>When the setup is complete, the <code>Client ID</code> and <code>Client Secret</code> will be displayed, but there is no need to take notes on this for this time (at your own risk).</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/bc08ab60-763c-d5b9-dd23-da89d5f3491b.png" alt="12.PNG" /></p>
+<p>Next, select <code>Keys and tokens</code> next to <code>Settings</code>, and press [Generate] under <code>Access Token and Secret</code>.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/9d068550-1cec-8930-72c7-f03fafe34600.png" alt="13.PNG" /></p>
+<p>Then, <code>Access Token</code> and <code>Access Token Secret</code> will be issued like below, so let's take note of them.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/bdcf7d8b-a241-e63c-168d-0b63b39951d1.png" alt="14.PNG" /></p>
+<p>Lastly, for confirmation, please ensure that the permissions of <code>Access Token and Secret</code> are correctly set to <code>Created with Read and Write permissions</code>. If the permission does not include &lt;font color=&quot;Red&quot;&gt;<code>Write</code>&lt;/font&gt;, it is possible that the <code>User authentication settings</code> are incorrect. Please review your settings again and reissue your <code>Access Token and Secret</code>.</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/0c1d1307-672e-bae2-d98e-85e51fd5c78d.png" alt="16.PNG" /></p>
+<p>Now you have all the information necessary to use the Twitter API. Let's move on to the implementation.</p>
+<h3>Implementation</h3>
+<p>I'll briefly explain the flow of the source code. The <code>get_all_posts()</code> function fetches all the articles posted on Qiita. The <code>post_tweet(message)</code> function posts the received <code>message</code> to Twitter. Finally, in the <code>main()</code> function, the title, URL, and tags are fetched from all the retrieved articles. Then, the lists are consolidated using the <code>zip()</code> function and shuffled. Afterwards, in the loop, a <code>message</code> is created (as much as possible, I adhered to Qiita's conventions. Please modify as you like), and the <code>post_tweet()</code> function is called to tweet and wait for 1 hour. Since a free account allows you to tweet up to 1,500 times a month, it's possible to shorten the wait time to a minimum of 28.8 minutes (please adjust as you like).</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/8a87d3a4-e8bb-f855-4c4d-f5e006c8f593.png" alt="17.PNG" /></p>
+<p>Next, let's explain about each variable. The top four are related to the Twitter API. The last one, <code>BEARER</code>, is the access token for Qiita.</p>
+<ul>
+<li><code>CONSUMER_KEY</code>: <code>API Key</code></li>
+<li><code>CONSUMER_SECRET</code>: <code>API Key Secret</code></li>
+<li><code>ACCESS_TOKEN</code>: <code>Access Token</code></li>
+<li><code>ACCESS_TOKEN_SECRET</code>: <code>Access Token Secret</code></li>
+<li><code>BEARER</code>: <code>Qiita access token</code></li>
+</ul>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">tweepy</span>
+
+<span class="k">def</span> <span class="nf">get_all_posts</span><span class="p">():</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">per_page</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">all_posts</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://qiita.com/api/v2/authenticated_user/items?page=</span><span class="si">{</span><span class="n">page</span><span class="si">}</span><span class="s1">&amp;per_page=</span><span class="si">{</span><span class="n">per_page</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+        <span class="n">posts</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">posts</span><span class="p">:</span>
+            <span class="n">all_posts</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">posts</span><span class="p">)</span>
+            <span class="n">page</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">all_posts</span>
+
+<span class="k">def</span> <span class="nf">post_tweet</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">consumer_key</span><span class="o">=</span><span class="n">CONSUMER_KEY</span><span class="p">,</span> 
+    <span class="n">consumer_secret</span><span class="o">=</span><span class="n">CONSUMER_SECRET</span><span class="p">,</span> <span class="n">access_token</span><span class="o">=</span><span class="n">ACCESS_TOKEN</span><span class="p">,</span> 
+    <span class="n">access_token_secret</span><span class="o">=</span><span class="n">ACCESS_TOKEN_SECRET</span><span class="p">)</span>
+    
+    <span class="n">client</span><span class="o">.</span><span class="n">create_tweet</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">message</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">posts</span> <span class="o">=</span> <span class="n">get_all_posts</span><span class="p">()</span> 
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+                <span class="n">titles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">])</span>
+                <span class="n">urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">])</span>
+                <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">])</span>
+            <span class="n">combined_lists</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">titles</span><span class="p">,</span><span class="n">urls</span><span class="p">,</span><span class="n">tags</span><span class="p">))</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">combined_lists</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">combined_lists</span><span class="p">:</span>
+                <span class="n">tag_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+                    <span class="n">tag_message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">tag</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> #Qiita </span><span class="si">{</span><span class="n">tag_message</span><span class="si">}</span><span class="s2"> @</span><span class="si">{</span><span class="n">USER_NAME</span><span class="si">}</span><span class="s2">より&quot;</span>
+                <span class="n">post_tweet</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3600</span><span class="p">)</span>  <span class="c1"># Wait for 1 hour</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># Wait for 1 minute before trying again</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Twitter API credentials</span>
+    <span class="n">USER_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;USER_NAME&quot;</span><span class="p">)</span>
+    <span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CONSUMER_KEY&quot;</span><span class="p">)</span>
+    <span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CONSUMER_SECRET&quot;</span><span class="p">)</span>
+    <span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;ACCESS_TOKEN&quot;</span><span class="p">)</span>
+    <span class="n">ACCESS_TOKEN_SECRET</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;ACCESS_TOKEN_SECRET&quot;</span><span class="p">)</span>
+
+    <span class="n">BEARER</span> <span class="o">=</span> <span class="n">os</span> <span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BEARER&quot;</span><span class="p">)</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">BEARER</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="p">}</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<h2>Finally</h2>
+<p>I have implemented a feature to post randomly from Qiita articles to Twitter. With this, Qiita articles will be regularly posted on Twitter, and I hope that they reach as many people as possible. I have uploaded everything including the Dockerfile to Github, so you can deploy from there. Wishing you a great Twitter life.</p>
+<h2>References</h2>
+<p><a href="https://note.com/bunsekiya_tech/n/n473884d9c843">Tried creating a Python code to automatically post note articles using the TwitterAPI</a></p>
+</td>
+    </tr>
+    </table>
+    
+    <h2>ReactionDetect</h2>
+    <table style="width:100%; table-layout: fixed;">
+    <tr>
+    <td style="width:50%; vertical-align:top; overflow-wrap: break-word;"><p><a href="https://github.com/Pumi1a/ReactionDetect/blob/main/README.md">English README is here</a></p>
+<h2>はじめに</h2>
+<p>以前、Discord の返信や応答などに使われるリアクションに気づかないことがあり不便なため、リアクションに反応して通知してくれる Bot を作りました。ユーザがリアクションすると Bot がメッセージ主にメンションする流れになっています。動作に関しては<a href="https://qiita.com/Pumila/items/cf447c24538e13994a38">こちら</a>を参考にして下さい。この度、この Bot を公開させて頂くことにしました（需要があるかは知りませんが…）。ぜひ使ってみて下さい。
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/54a2de5e-a96a-3964-c84e-80a5daf9b0b7.png" alt="キャプチャ.PNG" /></p>
+<h2>注意点</h2>
+<p>エラー報告は開発者の <a href="https://twitter.com/Pumi1a">Twitter</a> か <a href="https://github.com/Pumi1a/ReactionDetect">github</a> までお知らせ下さい。
+なお、利用しているホスティングサービスは &quot;Railway&quot; になります。性能はメモリが 8GB、CPU が 8 コアになります。そこまで負荷のかかる Bot ではないと思いますが、もしかしたら安定しなくなるかもしれません。&quot;Railway&quot; については<a href="https://qiita.com/Pumila/items/29f26fb349d5592046ae">こちら</a>を参考にして下さい。</p>
+<h2>導入方法</h2>
+<p><strong>注意：Bot の導入はサーバの管理者権限を持っている方しか出来ません。</strong></p>
+<p><a href="https://discord.com/api/oauth2/authorize?client_id=1063085355726798869&amp;permissions=2048&amp;scope=bot%20applications.commands">こちら</a>からクリックしてログイン後、導入したいサーバを選択して[はい]、続いて認証を押下して下さい。ロボットかどうかの確認画面でチェックして導入完了です。</p>
+<p>必要なくなったら、サーバ負荷軽減のために追放して頂けると助かります。</p>
+<h2>使い方</h2>
+<h3>各スラッシュコマンドの説明</h3>
+<p>Bot の各スラッシュコマンドについて説明していきます。スラッシュコマンド実行時にエラーが出たときはもう一度コマンドを実行してみて下さい。</p>
+<h4>通知先のチャンネルを変更する</h4>
+<p>通知先のチャンネルを変更することができます。デフォルトはシステムメッセージのチャンネルになっています。</p>
+<ol>
+<li>&quot;/&quot; を入力して、リアクション通知くんのアイコンをクリックし、コマンド一覧から、<code>/set_channel</code> を選択して下さい。</li>
+<li>通知をさせたいチャンネル名を入力し、実行して下さい。候補として挙がっているものから選択しても構いません。</li>
+<li>Bot に投稿権限がないチャンネル、もしくはテキストチャンネルではないチャンネルを選択した場合、以下のような警告が出ます。<code>Warning: No permission to post in the channel {new_channel.name}.</code>, <code>{new_channel.name} is not a text channel.</code>。</li>
+<li>Bot から <code>Set channel to {new_channel_name}.</code> とメッセージが来ます。
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/08c532b7-ca08-59f8-18f7-7aaec400dd19.png" alt="キャプチャ.PNG" /></li>
+</ol>
+<h2>最後に</h2>
+<p>Discord のリアクションに反応し通知する Bot を作ったはいいものの、公開しようと思いつつ色々と忙しくて、公開できませんでした。ちょうど機会があったのでこの度公開させて頂きました。ぜひ使ってみて下さい。
+サーバの維持費用のために、この Bot を気に入ってくれた方はご寄付して頂けると助かります。</p>
+<p>【Amazon ギフト券 受取人：yskl6695@gmail.com】</p>
+<p>https://www.amazon.co.jp/dp/B004N3APGO</p>
+<p>【PayPal】</p>
+<p>https://www.paypal.com/paypalme/IrsPumila</p>
+<p>ご意見、ご感想、ご要望、エラー報告などは<a href="https://twitter.com/Pumi1a">Twitter</a> まで。</p>
+</td>
+    <td style="width:50%; vertical-align:top; overflow-wrap: break-word;"><p><a href="https://github.com/Pumi1a/ReactionDetect/blob/main/README-ja.md">日本語版 README はこちら</a></p>
+<h2>Introduction</h2>
+<p>In the past, I found it inconvenient when I didn't notice the reactions used for replies and responses in Discord, so I created a Bot that reacts to reactions and sends notifications. When a user reacts, the Bot mentions the message owner. Please refer to the following <a href="https://qiita.com/Pumila/items/cf447c24538e13994a38">article</a> for how it works. I have decided to release this Bot (I don't know if there is a demand for it...). Please give it a try.</p>
+<p><img src="https://github.com/Pumi1a/ReactionDetect/assets/61972244/a1be651e-5ef9-4266-ab2b-9ecef81f6927" alt="キャプチャ" /></p>
+<h2>Cautions</h2>
+<p>Please report errors to the developer's Twitter or github.
+The hosting service used is &quot;Railway&quot;. It has 8GB of memory and 8 CPU cores. I don't think it's a particularly heavy load Bot, but it might become unstable. Please refer to <a href="https://qiita.com/Pumila/items/29f26fb349d5592046ae">this</a> for information about &quot;Railway&quot;.</p>
+<h2>Installation</h2>
+<p>Note: Only those with server administrator privileges can install the Bot.
+Click here, login, choose the server you want to install, click [Yes], and then press the authorization button. Check the confirmation screen whether it's a robot or not and the installation is complete.
+If you no longer need it, I would appreciate it if you could expel it to reduce the server load.</p>
+<h2>Usage</h2>
+<h3>Description of each slash command</h3>
+<p>I will explain each slash command of the Bot. If you get an error when executing the slash command, please try executing the command again.</p>
+<h4>Changing the notification channel</h4>
+<p>You can change the channel to which notifications are sent. The default is the system message channel.</p>
+<ol>
+<li>Enter &quot;/&quot;, click the icon of Reaction Notification-kun, select <code>/set_channel</code> from the command list.</li>
+<li>Enter the name of the channel you want to be notified and execute. You can also select from the suggested options.</li>
+<li>If you select a channel where the Bot has no posting authority, or a channel that is not a text channel, you will receive the following warnings. <code>Warning: No permission to post in the channel {new_channel.name}.</code>, <code>{new_channel.name} is not a text channel.</code>.</li>
+<li>You will receive a message from the Bot saying <code>Set channel to {new_channel_name}.</code>.
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1115291/08c532b7-ca08-59f8-18f7-7aaec400dd19.png" alt="キャプチャ.PNG" /></li>
+</ol>
+<h2>Finally</h2>
+<p>I had created a Bot that responds to Discord reactions and sends notifications, and while I was thinking of releasing it, I was busy with various things and could not release it. I had the opportunity to release it this time, so please give it a try.
+If you like this Bot, I would appreciate your donations for the server maintenance cost.</p>
+<p>【Amazon Gift Card Recipient：yskl6695@gmail.com】</p>
+<p>https://www.amazon.co.jp/dp/B004N3APGO</p>
+<p>【PayPal】</p>
+<p>https://www.paypal.com/paypalme/IrsPumila</p>
+<p>For opinions, impressions, requests, error reports, etc., please contact <a href="https://twitter.com/Pumi1a">Twitter</a>.</p>
+</td>
+    </tr>
+    </table>
+    
+</body>
 </html>
